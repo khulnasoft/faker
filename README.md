@@ -49,7 +49,7 @@ directory can be specified using the `BINDIR` environment variable, e.g.:
 
 [1]: https://pkg.go.dev/github.com/khulnasoft/faker
 [2]: https://pkg.go.dev/github.com/khulnasoft/faker/flow
-[Khulnasoft]: https://github.com/khulnasoft/shipyard
-[Kubebpf]: https://github.com/khulnasoft/KubeBPF
+[Shipyard]: https://github.com/khulnasoft/shipyard
+[KubeBPF]: https://github.com/khulnasoft/KubeBPF
 [icrowley/fake]: https://github.com/icrowley/fake
 [bxcodec/faker]: https://github.com/bxcodec/faker
