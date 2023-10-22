@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of KhulnaSoft
+// Copyright Authors of Khulnasoft
 
 package fake_test
 
