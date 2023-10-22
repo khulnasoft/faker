@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Cilium
+// Copyright Authors of KhulnaSoft
 
 package flow
 
@@ -22,12 +22,12 @@ var allEventTypes = []int32{
 }
 
 // EventType generates a random EventType.
-func EventType() *flowpb.CiliumEventType {
+func EventType() *flowpb.KhulnasoftEventType {
 	typ := allEventTypes[rand.Intn(len(allEventTypes))]
 	if typ == api.MessageTypeUnspec {
 		return nil
 	}
-	return &flowpb.CiliumEventType{
+	return &flowpb.KhulnasoftEventType{
 		Type: typ,
 		// NOTE: AgentNotify* are the most numerous.
 		SubType: int32(rand.Intn(13)),

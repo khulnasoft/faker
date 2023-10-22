@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Cilium
+// Copyright Authors of KhulnaSoft
 
 package flow
 
@@ -40,7 +40,7 @@ func Test_JSON(t *testing.T) {
 			resp1.ResponseTypes,
 			resp2.ResponseTypes,
 			cmpopts.IgnoreUnexported(
-				flowpb.CiliumEventType{},
+				flowpb.KhulnasoftEventType{},
 				flowpb.Endpoint{},
 				flowpb.Workload{},
 				flowpb.Ethernet{},

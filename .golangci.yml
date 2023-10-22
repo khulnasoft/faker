@@ -69,7 +69,7 @@ linters-settings:
   goheader:
     template: |-
       SPDX-License-Identifier: Apache-2.0
-      Copyright Authors of Cilium
+      Copyright Authors of KhulnaSoft
   gosec:
     # available rules: https://github.com/securego/gosec#available-rules
     includes: [] # include all available rules

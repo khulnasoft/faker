@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Cilium
+// Copyright Authors of KhulnaSoft
 
 package fake
 
@@ -15,14 +15,14 @@ var tiers = []string{
 
 var apps = []string{
 	"cert-manager",
-	"cilium",
+	"khulnasoft",
 	"coredns",
 	"cyberark",
 	"drupal",
 	"elasticsearch",
 	"etcd",
 	"gitlab",
-	"hubble-relay",
+	"kubebpf-relay",
 	"influxdb",
 	"jenkins",
 	"joomla",
@@ -41,7 +41,7 @@ var apps = []string{
 	"zookeeper",
 }
 var labels = []string{
-	"io.cilium/app",
+	"io.khulnasoft/app",
 	"k8s-app",
 	"pod-template-generation",
 	"pod-template-hash",

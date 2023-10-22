@@ -22,7 +22,7 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-// Replace directives from github.com/khulnasoft/shipyard. Keep in sync when updating Cilium!
+// Replace directives from github.com/khulnasoft/shipyard. Keep in sync when updating Khulnasoft!
 replace (
 	github.com/miekg/dns => github.com/khulnasoft/dns v1.1.51-0.20220729113855-5b94b11b46fc
 	go.universe.tf/metallb => github.com/khulnasoft/metallb v0.1.1-0.20220829170633-5d7dfb1129f7

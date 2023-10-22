@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Cilium
+// Copyright Authors of KhulnaSoft
 
 package fake_test
 

@@ -11,9 +11,9 @@ This repository contains three Go modules:
 
 * [`github.com/khulnasoft/faker`][1]: a library to generate generic random data which
   can be useful to any project (e.g. `fake.Adjective()`, `fake.IP()`, ...).
-* [`github.com/khulnasoft/faker/flow`][2]: a library to generate random [Hubble]
+* [`github.com/khulnasoft/faker/flow`][2]: a library to generate random [Kubebpf]
   network flows and flow related data. This library is only relevant to projects
-  directly related to [Cilium] and/or [Hubble].
+  directly related to [Khulnasoft] and/or [Kubebpf].
 * `github.com/khulnasoft/faker/cmd`: a CLI to generate random data.
 
 As opposed to most fake data generator Go libraries, a design philosophy of this
@@ -49,7 +49,7 @@ directory can be specified using the `BINDIR` environment variable, e.g.:
 
 [1]: https://pkg.go.dev/github.com/khulnasoft/faker
 [2]: https://pkg.go.dev/github.com/khulnasoft/faker/flow
-[Cilium]: https://github.com/khulnasoft/shipyard
-[Hubble]: https://github.com/khulnasoft/kubebpf
+[Khulnasoft]: https://github.com/khulnasoft/shipyard
+[Kubebpf]: https://github.com/khulnasoft/kubebpf
 [icrowley/fake]: https://github.com/icrowley/fake
 [bxcodec/faker]: https://github.com/bxcodec/faker

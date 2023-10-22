@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Cilium
+// Copyright Authors of KhulnaSoft
 
 package flow
 
@@ -39,7 +39,7 @@ var opts struct {
 func New() *cobra.Command {
 	flowsCmd := &cobra.Command{
 		Use:   "flow",
-		Short: "Generate random Hubble flows",
+		Short: "Generate random Kubebpf flows",
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			opts.ipVersion = flowpb.IPVersion_IPv4
 			srcIP, _, err := net.ParseCIDR(opts.sourceCIDR)
