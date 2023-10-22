@@ -13,7 +13,7 @@ This repository contains three Go modules:
   can be useful to any project (e.g. `fake.Adjective()`, `fake.IP()`, ...).
 * [`github.com/khulnasoft/faker/flow`][2]: a library to generate random [KubeBPF]
   network flows and flow related data. This library is only relevant to projects
-  directly related to [KhulnaSoft] and/or [Kubebpf].
+  directly related to [Shipyard] and/or [Kubebpf].
 * `github.com/khulnasoft/faker/cmd`: a CLI to generate random data.
 
 As opposed to most fake data generator Go libraries, a design philosophy of this
