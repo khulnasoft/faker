@@ -1,18 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package flow
 
 import (
 	"math/rand"
 
-	flowpb "github.com/khulnasoft/shipyard/api/v1/flow"
+	flowpb "github.com/cilium/cilium/api/v1/flow"
 )
 
-// TrafficDirection returns randomly traffic direction INGRESS or EGRESS.
+// TrafficDirection generates a random TrafficDirection.
 func TrafficDirection() flowpb.TrafficDirection {
-	if rand.Intn(2) == 0 { // 50% chance of picking up ingress
-		return flowpb.TrafficDirection_INGRESS
-	}
-	return flowpb.TrafficDirection_EGRESS
+	return flowpb.TrafficDirection(rand.Intn(len(flowpb.TrafficDirection_name)))
 }

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package flow
 
@@ -7,7 +7,7 @@ import (
 	"encoding/hex"
 	"math/rand"
 
-	flowpb "github.com/khulnasoft/shipyard/api/v1/flow"
+	flowpb "github.com/cilium/cilium/api/v1/flow"
 )
 
 const traceIDLen = 16
@@ -43,7 +43,7 @@ func TraceContext(options ...TraceContextOption) *flowpb.TraceContext {
 	for _, opt := range options {
 		opt.apply(&opts)
 	}
-	traceID := fakeTraceID()
+	traceID := fakerTraceID()
 	if len(opts.traceIDs) != 0 {
 		traceID = opts.traceIDs[rand.Intn(len(opts.traceIDs))]
 	}
@@ -54,10 +54,10 @@ func TraceContext(options ...TraceContextOption) *flowpb.TraceContext {
 	}
 }
 
-// fakeTraceID generates a fake trace ID. See the W3C Trace Context
+// fakerTraceID generates a faker trace ID. See the W3C Trace Context
 // specification for details:
 // https://www.w3.org/TR/trace-context/#trace-id
-func fakeTraceID() string {
+func fakerTraceID() string {
 	var tid [traceIDLen]byte
 	for !isValidTraceID(tid[:]) {
 		_, _ = rand.Read(tid[:])

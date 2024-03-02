@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package flow
 
 import (
 	"math/rand"
 
-	flowpb "github.com/khulnasoft/shipyard/api/v1/flow"
+	flowpb "github.com/cilium/cilium/api/v1/flow"
 	"github.com/khulnasoft/faker"
 )
 
@@ -147,8 +147,8 @@ func WithLayer4DestinationPort(port uint32) Layer4Option {
 func Layer4(options ...Layer4Option) *flowpb.Layer4 {
 	opts := layer4Options{
 		tcpFlags: randTCPFlags(),
-		srcPort:  fake.Port(fake.WithPortUser()),
-		dstPort:  fake.Port(fake.WithPortUser()),
+		srcPort:  faker.Port(faker.WithPortUser()),
+		dstPort:  faker.Port(faker.WithPortUser()),
 	}
 	for _, opt := range options {
 		opt.apply(&opts)

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package mac
 
@@ -34,7 +34,7 @@ func New() *cobra.Command {
 
 func runMACs(cmd *cobra.Command) error {
 	for i := 0; i < opts.count; i++ {
-		fmt.Fprintln(cmd.OutOrStdout(), fake.MAC())
+		fmt.Fprintln(cmd.OutOrStdout(), faker.MAC())
 	}
 	return nil
 }

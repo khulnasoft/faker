@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package ip
 
@@ -40,22 +40,22 @@ func New() *cobra.Command {
 }
 
 func runIPs(cmd *cobra.Command) error {
-	var ipOptions []fake.IPOption
+	var ipOptions []faker.IPOption
 	if opts.v4 {
-		ipOptions = append(ipOptions, fake.WithIPv4())
+		ipOptions = append(ipOptions, faker.WithIPv4())
 	}
 	if opts.v6 {
-		ipOptions = append(ipOptions, fake.WithIPv6())
+		ipOptions = append(ipOptions, faker.WithIPv6())
 	}
 	if opts.cidr != "" {
 		if _, _, err := net.ParseCIDR(opts.cidr); err != nil {
 			return err
 		}
-		ipOptions = append(ipOptions, fake.WithIPCIDR(opts.cidr))
+		ipOptions = append(ipOptions, faker.WithIPCIDR(opts.cidr))
 	}
 
 	for i := 0; i < opts.count; i++ {
-		fmt.Fprintln(cmd.OutOrStdout(), fake.IP(ipOptions...))
+		fmt.Fprintln(cmd.OutOrStdout(), faker.IP(ipOptions...))
 	}
 	return nil
 }

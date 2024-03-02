@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package flow
 
 import (
 	"math/rand"
 
-	flowpb "github.com/khulnasoft/shipyard/api/v1/flow"
+	flowpb "github.com/cilium/cilium/api/v1/flow"
 	"golang.org/x/net/ipv4"
 	"golang.org/x/net/ipv6"
 )

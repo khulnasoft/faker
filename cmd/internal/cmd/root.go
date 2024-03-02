@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package cmd
 
@@ -24,8 +24,8 @@ var opts struct {
 func New() *cobra.Command {
 	var pprofCPUFile *os.File
 	rootCmd := &cobra.Command{
-		Use:           "fake",
-		Short:         "Generate fake network data",
+		Use:           "faker",
+		Short:         "Generate faker network data",
 		SilenceErrors: true, // this is being handled in main
 		SilenceUsage:  true,
 		PersistentPreRunE: func(_ *cobra.Command, _ []string) error {

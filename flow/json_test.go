@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package flow
 
@@ -7,8 +7,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	flowpb "github.com/khulnasoft/shipyard/api/v1/flow"
-	observerpb "github.com/khulnasoft/shipyard/api/v1/observer"
+	flowpb "github.com/cilium/cilium/api/v1/flow"
+	observerpb "github.com/cilium/cilium/api/v1/observer"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -20,7 +20,7 @@ func Test_JSON(t *testing.T) {
 		flow := New()
 		resp1 := observerpb.GetFlowsResponse{
 			NodeName: "test-node",
-			Time:     flow.Time,
+			Time:     flow.GetTime(),
 			ResponseTypes: &observerpb.GetFlowsResponse_Flow{
 				Flow: flow,
 			},
@@ -37,10 +37,10 @@ func Test_JSON(t *testing.T) {
 		}
 
 		if diff := cmp.Diff(
-			resp1.ResponseTypes,
-			resp2.ResponseTypes,
+			resp1.GetResponseTypes(),
+			resp2.GetResponseTypes(),
 			cmpopts.IgnoreUnexported(
-				flowpb.KhulnasoftEventType{},
+				flowpb.CiliumEventType{},
 				flowpb.Endpoint{},
 				flowpb.Workload{},
 				flowpb.Ethernet{},

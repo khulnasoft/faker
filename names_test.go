@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
-package fake_test
+package faker_test
 
 import (
 	"testing"
@@ -16,14 +16,14 @@ func TestNames(t *testing.T) {
 			t.Error("Names(-1) should panic()")
 		}
 	}()
-	_ = fake.Names(-1)
+	_ = faker.Names(-1)
 
-	names := fake.Names(0)
+	names := faker.Names(0)
 	assert.NotNil(t, names)
-	assert.Equal(t, len(names), 0)
+	assert.Empty(t, names)
 
 	max := 100
-	names = fake.Names(max)
+	names = faker.Names(max)
 	assert.NotNil(t, names)
 	assert.LessOrEqual(t, len(names), max)
 	for _, n := range names {

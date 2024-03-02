@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package flow
 
 import (
 	"math/rand"
 
-	flowpb "github.com/khulnasoft/shipyard/api/v1/flow"
+	flowpb "github.com/cilium/cilium/api/v1/flow"
 	"github.com/khulnasoft/faker"
 )
 
@@ -65,10 +65,10 @@ func WithEndpointWorkloads(workloads map[string]string) EndpointOption {
 // the endpoint to return.
 func Endpoint(options ...EndpointOption) *flowpb.Endpoint {
 	opts := endpointOptions{
-		namespace: fake.K8sNamespace(),
-		podName:   fake.K8sPodName(),
-		labels:    fake.K8sLabels(),
-		workloads: fakeWorkloads(),
+		namespace: faker.K8sNamespace(),
+		podName:   faker.K8sPodName(),
+		labels:    faker.K8sLabels(),
+		workloads: fakerWorkloads(),
 	}
 	for _, opt := range options {
 		opt.apply(&opts)
@@ -84,7 +84,7 @@ func Endpoint(options ...EndpointOption) *flowpb.Endpoint {
 	}
 }
 
-// see https://github.com/khulnasoft/shipyard/blob/d6483e1d26052b7f210a746ff85e919b76c9430f/pkg/k8s/utils/workload.go#L32
+// see https://github.com/cilium/cilium/blob/d6483e1d26052b7f210a746ff85e919b76c9430f/pkg/k8s/utils/workload.go#L32
 var workloadKinds []string = []string{
 	"CronJob",
 	"DaemonSet",
@@ -96,15 +96,15 @@ var workloadKinds []string = []string{
 	"StatefulSet",
 }
 
-func fakeWorkloads() map[string]string {
+func fakerWorkloads() map[string]string {
 	workloads := map[string]string{
-		fake.App(): workloadKinds[rand.Intn(len(workloadKinds))],
+		faker.App(): workloadKinds[rand.Intn(len(workloadKinds))],
 	}
 	if rand.Intn(10) == 0 { // 10% chance of having more than one workload.
-		workloads[fake.App()] = workloadKinds[rand.Intn(len(workloadKinds))]
+		workloads[faker.App()] = workloadKinds[rand.Intn(len(workloadKinds))]
 	}
 	if rand.Intn(100) == 0 { // 1% chance of having more than two workloads.
-		workloads[fake.App()] = workloadKinds[rand.Intn(len(workloadKinds))]
+		workloads[faker.App()] = workloadKinds[rand.Intn(len(workloadKinds))]
 	}
 	return workloads
 }

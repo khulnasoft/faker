@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package flow
 
@@ -7,7 +7,8 @@ import (
 	"math/rand"
 	"time"
 
-	flowpb "github.com/khulnasoft/shipyard/api/v1/flow"
+	flowpb "github.com/cilium/cilium/api/v1/flow"
+	"github.com/google/uuid"
 	"github.com/khulnasoft/faker"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
@@ -15,6 +16,7 @@ import (
 type flowOptions struct {
 	time                    time.Time
 	verdict                 flowpb.Verdict
+	authType                flowpb.AuthType
 	dropReason              flowpb.DropReason
 	nodeName                string
 	sourceNames, destNames  []string
@@ -48,6 +50,13 @@ func WithFlowTime(t time.Time) Option {
 func WithFlowVerdict(v flowpb.Verdict) Option {
 	return funcFlowOption(func(o *flowOptions) {
 		o.verdict = v
+	})
+}
+
+// WithFlowAuthType sets the authentication type field of a flow.
+func WithFlowAuthType(t flowpb.AuthType) Option {
+	return funcFlowOption(func(o *flowOptions) {
+		o.authType = t
 	})
 }
 
@@ -135,10 +144,11 @@ func New(options ...Option) *flowpb.Flow {
 	opts := flowOptions{
 		time:                    time.Now().UTC(),
 		verdict:                 Verdict(),
+		authType:                AuthType(),
 		typ:                     flowpb.FlowType_L3_L4,
-		nodeName:                fake.K8sNodeName(),
-		sourceNames:             fake.Names(5),
-		destNames:               fake.Names(5),
+		nodeName:                faker.K8sNodeName(),
+		sourceNames:             faker.Names(5),
+		destNames:               faker.Names(5),
 		epSource:                Endpoint(),
 		epDest:                  Endpoint(),
 		traceContextProbability: 0.1,
@@ -150,8 +160,8 @@ func New(options ...Option) *flowpb.Flow {
 	if opts.typ == flowpb.FlowType_L3_L4 {
 		if opts.ip == nil {
 			opts.ip = &flowpb.IP{
-				Source:      fake.IP(fake.WithIPCIDR("10.0.0.0/8")),
-				Destination: fake.IP(fake.WithIPCIDR("10.0.0.0/8")),
+				Source:      faker.IP(faker.WithIPCIDR("10.0.0.0/8")),
+				Destination: faker.IP(faker.WithIPCIDR("10.0.0.0/8")),
 				IpVersion:   flowpb.IPVersion_IPv4,
 			}
 		}
@@ -176,8 +186,8 @@ func New(options ...Option) *flowpb.Flow {
 	// If an IP is defined, the Ethernet part shall be as well
 	if opts.ip != nil && opts.ethernet == nil {
 		opts.ethernet = &flowpb.Ethernet{
-			Source:      fake.MAC(),
-			Destination: fake.MAC(),
+			Source:      faker.MAC(),
+			Destination: faker.MAC(),
 		}
 	}
 
@@ -198,8 +208,10 @@ func New(options ...Option) *flowpb.Flow {
 	}
 
 	return &flowpb.Flow{
-		Time:    timestamppb.New(opts.time),
-		Verdict: opts.verdict,
+		Time:     timestamppb.New(opts.time),
+		Uuid:     uuid.NewString(),
+		Verdict:  opts.verdict,
+		AuthType: opts.authType,
 		// NOTE: don't populate DropReason as it is deprecated.
 		Ethernet:         opts.ethernet,
 		IP:               opts.ip,
@@ -215,13 +227,13 @@ func New(options ...Option) *flowpb.Flow {
 		EventType:             EventType(),
 		SourceService:         Service(),
 		DestinationService:    Service(),
-		TrafficDirection:      flowpb.TrafficDirection(rand.Intn(len(flowpb.TrafficDirection_name) + 1)),
+		TrafficDirection:      TrafficDirection(),
 		PolicyMatchType:       uint32(rand.Intn(5)),
 		TraceObservationPoint: TraceObservationPoint(),
 		DropReasonDesc:        opts.dropReason,
 		IsReply:               IsReply(),
 		TraceContext:          tc,
-		SockXlatePoint:        flowpb.SocketTranslationPoint(rand.Intn(len(flowpb.SocketTranslationPoint_name) + 1)),
+		SockXlatePoint:        flowpb.SocketTranslationPoint(rand.Intn(len(flowpb.SocketTranslationPoint_name))),
 		SocketCookie:          rand.Uint64(),
 		CgroupId:              rand.Uint64(),
 		// NOTE: don't populate Summary as it is deprecated.

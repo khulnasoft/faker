@@ -1,5 +1,5 @@
 # See https://golangci-lint.run/usage/configuration/ for available options.
-# Also https://github.com/khulnasoft/shipyard/blob/main/.golangci.yaml as a
+# Also https://github.com/cilium/cilium/blob/main/.golangci.yaml as a
 # reference.
 run:
   go: '1.21'
@@ -49,14 +49,18 @@ linters:
     - nilnil
     - noctx
     - nosprintfhostport
+    - perfsprint
     - prealloc
     - predeclared
+    - protogetter
     - reassign
     - revive
     - rowserrcheck
+    - sloglint
     - staticcheck
     - tagalign
     - tenv
+    - testifylint
     - thelper
     - tparallel
     - typecheck
@@ -69,7 +73,7 @@ linters-settings:
   goheader:
     template: |-
       SPDX-License-Identifier: Apache-2.0
-      Copyright Authors of Khulnasoft
+      Copyright Authors of Cilium
   gosec:
     # available rules: https://github.com/securego/gosec#available-rules
     includes: [] # include all available rules

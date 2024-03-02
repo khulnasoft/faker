@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package flow
 
@@ -10,11 +10,11 @@ import (
 	"net"
 	"time"
 
-	flowpb "github.com/khulnasoft/shipyard/api/v1/flow"
-	observerpb "github.com/khulnasoft/shipyard/api/v1/observer"
+	flowpb "github.com/cilium/cilium/api/v1/flow"
+	observerpb "github.com/cilium/cilium/api/v1/observer"
+	"github.com/cilium/hubble/pkg/printer"
 	"github.com/khulnasoft/faker"
-	fakeflow "github.com/khulnasoft/faker/flow"
-	"github.com/khulnasoft/kubebpf/pkg/printer"
+	fakerflow "github.com/khulnasoft/faker/flow"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -39,7 +39,7 @@ var opts struct {
 func New() *cobra.Command {
 	flowsCmd := &cobra.Command{
 		Use:   "flow",
-		Short: "Generate random Kubebpf flows",
+		Short: "Generate random Hubble flows",
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			opts.ipVersion = flowpb.IPVersion_IPv4
 			srcIP, _, err := net.ParseCIDR(opts.sourceCIDR)
@@ -123,10 +123,10 @@ func runFlows(p *printer.Printer) error {
 	nodesIPs := make([]node, opts.nodesCount)
 	for i := 0; i < len(nodesIPs); i++ {
 		nodesIPs[i] = node{
-			name: fake.K8sNodeName(),
+			name: faker.K8sNodeName(),
 			ip: &flowpb.IP{
-				Source:      fake.IP(fake.WithIPCIDR(opts.sourceCIDR)),
-				Destination: fake.IP(fake.WithIPCIDR(opts.destCIDR)),
+				Source:      faker.IP(faker.WithIPCIDR(opts.sourceCIDR)),
+				Destination: faker.IP(faker.WithIPCIDR(opts.destCIDR)),
 				IpVersion:   opts.ipVersion,
 			},
 		}
@@ -142,10 +142,10 @@ func runFlows(p *printer.Printer) error {
 			NodeName: nodesIPs[idx].name,
 			Time:     timestamppb.New(t),
 			ResponseTypes: &observerpb.GetFlowsResponse_Flow{
-				Flow: fakeflow.New(
-					fakeflow.WithFlowTime(t),
-					fakeflow.WithFlowNodeName(nodesIPs[idx].name),
-					fakeflow.WithFlowIP(nodesIPs[idx].ip),
+				Flow: fakerflow.New(
+					fakerflow.WithFlowTime(t),
+					fakerflow.WithFlowNodeName(nodesIPs[idx].name),
+					fakerflow.WithFlowIP(nodesIPs[idx].ip),
 				),
 			},
 		})

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
-// Copyright Authors of Khulnasoft
+// Copyright Authors of Cilium
 
 package flow
 
 import (
-	flowpb "github.com/khulnasoft/shipyard/api/v1/flow"
+	flowpb "github.com/cilium/cilium/api/v1/flow"
 	"github.com/khulnasoft/faker"
 )
 
@@ -42,8 +42,8 @@ func WithServiceName(name string) ServiceOption {
 // service to return.
 func Service(options ...ServiceOption) *flowpb.Service {
 	opts := serviceOptions{
-		namespace: fake.K8sNamespace(),
-		name:      fake.Name(),
+		namespace: faker.K8sNamespace(),
+		name:      faker.Name(),
 	}
 	for _, opt := range options {
 		opt.apply(&opts)

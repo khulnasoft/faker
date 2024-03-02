@@ -22,7 +22,7 @@ updates:
     rebase-strategy: disabled
     ignore:
         # updated manually due to replace directives
-      - dependency-name: "github.com/khulnasoft/shipyard"
+      - dependency-name: "github.com/cilium/cilium"
         # updated manually when releasing
       - dependency-name: "github.com/khulnasoft/faker"
     labels:
@@ -39,7 +39,7 @@ updates:
     rebase-strategy: disabled
     ignore:
         # updated manually due to replace directives
-      - dependency-name: "github.com/khulnasoft/shipyard"
+      - dependency-name: "github.com/cilium/cilium"
         # updated manually when releasing
       - dependency-name: "github.com/khulnasoft/faker"
     labels:
