@@ -5,7 +5,7 @@ package flow
 
 import (
 	flowpb "github.com/cilium/cilium/api/v1/flow"
-	"github.com/khulnasoft/faker"
+	"github.com/cilium/fake"
 )
 
 type serviceOptions struct {
@@ -42,8 +42,8 @@ func WithServiceName(name string) ServiceOption {
 // service to return.
 func Service(options ...ServiceOption) *flowpb.Service {
 	opts := serviceOptions{
-		namespace: faker.K8sNamespace(),
-		name:      faker.Name(),
+		namespace: fake.K8sNamespace(),
+		name:      fake.Name(),
 	}
 	for _, opt := range options {
 		opt.apply(&opts)

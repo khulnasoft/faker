@@ -8,9 +8,9 @@ import (
 	"runtime"
 	"runtime/pprof"
 
-	"github.com/khulnasoft/faker/cmd/internal/cmd/flow"
-	"github.com/khulnasoft/faker/cmd/internal/cmd/ip"
-	"github.com/khulnasoft/faker/cmd/internal/cmd/mac"
+	"github.com/cilium/fake/cmd/internal/cmd/flow"
+	"github.com/cilium/fake/cmd/internal/cmd/ip"
+	"github.com/cilium/fake/cmd/internal/cmd/mac"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )
@@ -24,8 +24,8 @@ var opts struct {
 func New() *cobra.Command {
 	var pprofCPUFile *os.File
 	rootCmd := &cobra.Command{
-		Use:           "faker",
-		Short:         "Generate faker network data",
+		Use:           "fake",
+		Short:         "Generate fake network data",
 		SilenceErrors: true, // this is being handled in main
 		SilenceUsage:  true,
 		PersistentPreRunE: func(_ *cobra.Command, _ []string) error {

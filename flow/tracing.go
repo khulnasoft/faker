@@ -43,7 +43,7 @@ func TraceContext(options ...TraceContextOption) *flowpb.TraceContext {
 	for _, opt := range options {
 		opt.apply(&opts)
 	}
-	traceID := fakerTraceID()
+	traceID := fakeTraceID()
 	if len(opts.traceIDs) != 0 {
 		traceID = opts.traceIDs[rand.Intn(len(opts.traceIDs))]
 	}
@@ -54,10 +54,10 @@ func TraceContext(options ...TraceContextOption) *flowpb.TraceContext {
 	}
 }
 
-// fakerTraceID generates a faker trace ID. See the W3C Trace Context
+// fakeTraceID generates a fake trace ID. See the W3C Trace Context
 // specification for details:
 // https://www.w3.org/TR/trace-context/#trace-id
-func fakerTraceID() string {
+func fakeTraceID() string {
 	var tid [traceIDLen]byte
 	for !isValidTraceID(tid[:]) {
 		_, _ = rand.Read(tid[:])

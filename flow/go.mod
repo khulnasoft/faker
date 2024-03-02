@@ -1,10 +1,10 @@
-module github.com/khulnasoft/faker/flow
+module github.com/cilium/fake/flow
 
 go 1.20
 
 require (
 	github.com/cilium/cilium v1.14.5
-	github.com/khulnasoft/faker v0.6.1
+	github.com/cilium/fake v0.6.1
 	github.com/google/go-cmp v0.6.0
 	github.com/google/uuid v1.6.0
 	github.com/stretchr/testify v1.8.4
@@ -30,4 +30,4 @@ replace (
 	sigs.k8s.io/controller-tools => github.com/cilium/controller-tools v0.6.2
 )
 
-replace github.com/khulnasoft/faker => ../
+replace github.com/cilium/fake => ../

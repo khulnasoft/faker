@@ -6,7 +6,7 @@ package mac
 import (
 	"fmt"
 
-	"github.com/khulnasoft/faker"
+	"github.com/cilium/fake"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )
@@ -34,7 +34,7 @@ func New() *cobra.Command {
 
 func runMACs(cmd *cobra.Command) error {
 	for i := 0; i < opts.count; i++ {
-		fmt.Fprintln(cmd.OutOrStdout(), faker.MAC())
+		fmt.Fprintln(cmd.OutOrStdout(), fake.MAC())
 	}
 	return nil
 }

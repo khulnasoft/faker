@@ -1,4 +1,4 @@
-module github.com/khulnasoft/faker
+module github.com/cilium/fake
 
 go 1.20
 

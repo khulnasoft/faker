@@ -7,7 +7,7 @@ import (
 	"math/rand"
 
 	flowpb "github.com/cilium/cilium/api/v1/flow"
-	"github.com/khulnasoft/faker"
+	"github.com/cilium/fake"
 )
 
 type endpointOptions struct {
@@ -65,10 +65,10 @@ func WithEndpointWorkloads(workloads map[string]string) EndpointOption {
 // the endpoint to return.
 func Endpoint(options ...EndpointOption) *flowpb.Endpoint {
 	opts := endpointOptions{
-		namespace: faker.K8sNamespace(),
-		podName:   faker.K8sPodName(),
-		labels:    faker.K8sLabels(),
-		workloads: fakerWorkloads(),
+		namespace: fake.K8sNamespace(),
+		podName:   fake.K8sPodName(),
+		labels:    fake.K8sLabels(),
+		workloads: fakeWorkloads(),
 	}
 	for _, opt := range options {
 		opt.apply(&opts)
@@ -96,15 +96,15 @@ var workloadKinds []string = []string{
 	"StatefulSet",
 }
 
-func fakerWorkloads() map[string]string {
+func fakeWorkloads() map[string]string {
 	workloads := map[string]string{
-		faker.App(): workloadKinds[rand.Intn(len(workloadKinds))],
+		fake.App(): workloadKinds[rand.Intn(len(workloadKinds))],
 	}
 	if rand.Intn(10) == 0 { // 10% chance of having more than one workload.
-		workloads[faker.App()] = workloadKinds[rand.Intn(len(workloadKinds))]
+		workloads[fake.App()] = workloadKinds[rand.Intn(len(workloadKinds))]
 	}
 	if rand.Intn(100) == 0 { // 1% chance of having more than two workloads.
-		workloads[faker.App()] = workloadKinds[rand.Intn(len(workloadKinds))]
+		workloads[fake.App()] = workloadKinds[rand.Intn(len(workloadKinds))]
 	}
 	return workloads
 }

@@ -12,9 +12,9 @@ import (
 
 	flowpb "github.com/cilium/cilium/api/v1/flow"
 	observerpb "github.com/cilium/cilium/api/v1/observer"
+	"github.com/cilium/fake"
+	fakeflow "github.com/cilium/fake/flow"
 	"github.com/cilium/hubble/pkg/printer"
-	"github.com/khulnasoft/faker"
-	fakerflow "github.com/khulnasoft/faker/flow"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -123,10 +123,10 @@ func runFlows(p *printer.Printer) error {
 	nodesIPs := make([]node, opts.nodesCount)
 	for i := 0; i < len(nodesIPs); i++ {
 		nodesIPs[i] = node{
-			name: faker.K8sNodeName(),
+			name: fake.K8sNodeName(),
 			ip: &flowpb.IP{
-				Source:      faker.IP(faker.WithIPCIDR(opts.sourceCIDR)),
-				Destination: faker.IP(faker.WithIPCIDR(opts.destCIDR)),
+				Source:      fake.IP(fake.WithIPCIDR(opts.sourceCIDR)),
+				Destination: fake.IP(fake.WithIPCIDR(opts.destCIDR)),
 				IpVersion:   opts.ipVersion,
 			},
 		}
@@ -142,10 +142,10 @@ func runFlows(p *printer.Printer) error {
 			NodeName: nodesIPs[idx].name,
 			Time:     timestamppb.New(t),
 			ResponseTypes: &observerpb.GetFlowsResponse_Flow{
-				Flow: fakerflow.New(
-					fakerflow.WithFlowTime(t),
-					fakerflow.WithFlowNodeName(nodesIPs[idx].name),
-					fakerflow.WithFlowIP(nodesIPs[idx].ip),
+				Flow: fakeflow.New(
+					fakeflow.WithFlowTime(t),
+					fakeflow.WithFlowNodeName(nodesIPs[idx].name),
+					fakeflow.WithFlowIP(nodesIPs[idx].ip),
 				),
 			},
 		})

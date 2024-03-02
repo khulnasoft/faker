@@ -24,7 +24,7 @@ updates:
         # updated manually due to replace directives
       - dependency-name: "github.com/cilium/cilium"
         # updated manually when releasing
-      - dependency-name: "github.com/khulnasoft/faker"
+      - dependency-name: "github.com/cilium/fake"
     labels:
     - module/cmd
     - ci/dependabot
@@ -41,7 +41,7 @@ updates:
         # updated manually due to replace directives
       - dependency-name: "github.com/cilium/cilium"
         # updated manually when releasing
-      - dependency-name: "github.com/khulnasoft/faker"
+      - dependency-name: "github.com/cilium/fake"
     labels:
     - module/flow
     - ci/dependabot

@@ -1,4 +1,4 @@
-/cmd/faker
+/cmd/fake
 /cmd/cpu.pprof
 /cmd/mem.pprof
 /cpu.prof

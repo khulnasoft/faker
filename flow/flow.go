@@ -8,8 +8,8 @@ import (
 	"time"
 
 	flowpb "github.com/cilium/cilium/api/v1/flow"
+	"github.com/cilium/fake"
 	"github.com/google/uuid"
-	"github.com/khulnasoft/faker"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
@@ -146,9 +146,9 @@ func New(options ...Option) *flowpb.Flow {
 		verdict:                 Verdict(),
 		authType:                AuthType(),
 		typ:                     flowpb.FlowType_L3_L4,
-		nodeName:                faker.K8sNodeName(),
-		sourceNames:             faker.Names(5),
-		destNames:               faker.Names(5),
+		nodeName:                fake.K8sNodeName(),
+		sourceNames:             fake.Names(5),
+		destNames:               fake.Names(5),
 		epSource:                Endpoint(),
 		epDest:                  Endpoint(),
 		traceContextProbability: 0.1,
@@ -160,8 +160,8 @@ func New(options ...Option) *flowpb.Flow {
 	if opts.typ == flowpb.FlowType_L3_L4 {
 		if opts.ip == nil {
 			opts.ip = &flowpb.IP{
-				Source:      faker.IP(faker.WithIPCIDR("10.0.0.0/8")),
-				Destination: faker.IP(faker.WithIPCIDR("10.0.0.0/8")),
+				Source:      fake.IP(fake.WithIPCIDR("10.0.0.0/8")),
+				Destination: fake.IP(fake.WithIPCIDR("10.0.0.0/8")),
 				IpVersion:   flowpb.IPVersion_IPv4,
 			}
 		}
@@ -186,8 +186,8 @@ func New(options ...Option) *flowpb.Flow {
 	// If an IP is defined, the Ethernet part shall be as well
 	if opts.ip != nil && opts.ethernet == nil {
 		opts.ethernet = &flowpb.Ethernet{
-			Source:      faker.MAC(),
-			Destination: faker.MAC(),
+			Source:      fake.MAC(),
+			Destination: fake.MAC(),
 		}
 	}
 

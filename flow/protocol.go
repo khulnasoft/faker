@@ -7,7 +7,7 @@ import (
 	"math/rand"
 
 	flowpb "github.com/cilium/cilium/api/v1/flow"
-	"github.com/khulnasoft/faker"
+	"github.com/cilium/fake"
 )
 
 // TCPFlags represents a set TCP flags.
@@ -147,8 +147,8 @@ func WithLayer4DestinationPort(port uint32) Layer4Option {
 func Layer4(options ...Layer4Option) *flowpb.Layer4 {
 	opts := layer4Options{
 		tcpFlags: randTCPFlags(),
-		srcPort:  faker.Port(faker.WithPortUser()),
-		dstPort:  faker.Port(faker.WithPortUser()),
+		srcPort:  fake.Port(fake.WithPortUser()),
+		dstPort:  fake.Port(fake.WithPortUser()),
 	}
 	for _, opt := range options {
 		opt.apply(&opts)

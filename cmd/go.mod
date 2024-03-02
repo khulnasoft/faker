@@ -1,11 +1,11 @@
-module github.com/khulnasoft/faker/cmd
+module github.com/cilium/fake/cmd
 
 go 1.20
 
 require (
 	github.com/cilium/cilium v1.14.5
-	github.com/khulnasoft/faker v0.6.1
-	github.com/khulnasoft/faker/flow v0.6.1
+	github.com/cilium/fake v0.6.1
+	github.com/cilium/fake/flow v0.6.1
 	github.com/cilium/hubble v0.12.3
 	github.com/spf13/cobra v1.8.0
 	github.com/spf13/pflag v1.0.6-0.20210604193023-d5e0c0615ace
@@ -80,6 +80,6 @@ replace (
 	sigs.k8s.io/controller-tools => github.com/cilium/controller-tools v0.6.2
 )
 
-replace github.com/khulnasoft/faker => ../
+replace github.com/cilium/fake => ../
 
-replace github.com/khulnasoft/faker/flow => ../flow/
+replace github.com/cilium/fake/flow => ../flow/
