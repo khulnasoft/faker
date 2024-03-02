@@ -7,7 +7,7 @@ import (
 	"math/rand"
 
 	flowpb "github.com/cilium/cilium/api/v1/flow"
-	"github.com/cilium/fake"
+	"github.com/khulnasoft/fake"
 )
 
 type endpointOptions struct {

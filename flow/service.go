@@ -5,7 +5,7 @@ package flow
 
 import (
 	flowpb "github.com/cilium/cilium/api/v1/flow"
-	"github.com/cilium/fake"
+	"github.com/khulnasoft/fake"
 )
 
 type serviceOptions struct {

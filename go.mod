@@ -1,4 +1,4 @@
-module github.com/cilium/fake
+module github.com/khulnasoft/fake
 
 go 1.20
 

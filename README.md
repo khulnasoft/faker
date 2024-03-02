@@ -1,20 +1,20 @@
 # fake - generate random data for testing and/or performance evaluation
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/cilium/fake.svg)](https://pkg.go.dev/github.com/cilium/fake)
-[![CI](https://github.com/cilium/fake/actions/workflows/tests.yml/badge.svg)](https://github.com/cilium/fake/actions/workflows/tests.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/cilium/fake)](https://goreportcard.com/report/github.com/cilium/fake)
+[![Go Reference](https://pkg.go.dev/badge/github.com/khulnasoft/fake.svg)](https://pkg.go.dev/github.com/khulnasoft/fake)
+[![CI](https://github.com/khulnasoft/fake/actions/workflows/tests.yml/badge.svg)](https://github.com/khulnasoft/fake/actions/workflows/tests.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/khulnasoft/fake)](https://goreportcard.com/report/github.com/khulnasoft/fake)
 
 Fake is a Go library and CLI to generate random data such as names, adjectives,
 IP addresses and so on.
 
 This repository contains three Go modules:
 
-* [`github.com/cilium/fake`][1]: a library to generate generic random data which
+* [`github.com/khulnasoft/fake`][1]: a library to generate generic random data which
   can be useful to any project (e.g. `fake.Adjective()`, `fake.IP()`, ...).
-* [`github.com/cilium/fake/flow`][2]: a library to generate random [Hubble]
+* [`github.com/khulnasoft/fake/flow`][2]: a library to generate random [Hubble]
   network flows and flow related data. This library is only relevant to projects
   directly related to [Cilium] and/or [Hubble].
-* `github.com/cilium/fake/cmd`: a CLI to generate random data.
+* `github.com/khulnasoft/fake/cmd`: a CLI to generate random data.
 
 As opposed to most fake data generator Go libraries, a design philosophy of this
 library is to allow fine-grained control over generated data.
@@ -47,8 +47,8 @@ directory can be specified using the `BINDIR` environment variable, e.g.:
 
     BINDIR=~/.local/bin make install
 
-[1]: https://pkg.go.dev/github.com/cilium/fake
-[2]: https://pkg.go.dev/github.com/cilium/fake/flow
+[1]: https://pkg.go.dev/github.com/khulnasoft/fake
+[2]: https://pkg.go.dev/github.com/khulnasoft/fake/flow
 [Cilium]: https://github.com/cilium/cilium
 [Hubble]: https://github.com/cilium/hubble
 [icrowley/fake]: https://github.com/icrowley/fake

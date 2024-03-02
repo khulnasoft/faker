@@ -6,7 +6,7 @@ package fake_test
 import (
 	"testing"
 
-	"github.com/cilium/fake"
+	"github.com/khulnasoft/fake"
 	"github.com/stretchr/testify/assert"
 )
 

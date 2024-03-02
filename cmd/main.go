@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cilium/fake/cmd/internal/cmd"
+	"github.com/khulnasoft/fake/cmd/internal/cmd"
 )
 
 func main() {

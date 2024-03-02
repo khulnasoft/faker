@@ -8,8 +8,8 @@ import (
 	"time"
 
 	flowpb "github.com/cilium/cilium/api/v1/flow"
-	"github.com/cilium/fake"
 	"github.com/google/uuid"
+	"github.com/khulnasoft/fake"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 

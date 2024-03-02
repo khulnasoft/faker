@@ -12,9 +12,9 @@ import (
 
 	flowpb "github.com/cilium/cilium/api/v1/flow"
 	observerpb "github.com/cilium/cilium/api/v1/observer"
-	"github.com/cilium/fake"
-	fakeflow "github.com/cilium/fake/flow"
 	"github.com/cilium/hubble/pkg/printer"
+	"github.com/khulnasoft/fake"
+	fakeflow "github.com/khulnasoft/fake/flow"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"google.golang.org/protobuf/types/known/timestamppb"
