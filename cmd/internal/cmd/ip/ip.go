@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/cilium/fake"
+	"github.com/khulnasoft/fake"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )

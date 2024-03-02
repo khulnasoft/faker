@@ -8,9 +8,9 @@ import (
 	"runtime"
 	"runtime/pprof"
 
-	"github.com/cilium/fake/cmd/internal/cmd/flow"
-	"github.com/cilium/fake/cmd/internal/cmd/ip"
-	"github.com/cilium/fake/cmd/internal/cmd/mac"
+	"github.com/khulnasoft/fake/cmd/internal/cmd/flow"
+	"github.com/khulnasoft/fake/cmd/internal/cmd/ip"
+	"github.com/khulnasoft/fake/cmd/internal/cmd/mac"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 )
